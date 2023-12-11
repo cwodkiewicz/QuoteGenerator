@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+  http-equiv="Content-Security-Policy"
+  content="
+    default-src *;
+    script-src 'self' https://apis.google.com 'unsafe-inline';
+    style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    connect-src *;
+    img-src 'self' data:;
+    object-src 'none';
+    media-src 'self' data:;
+    child-src 'none';
+    frame-src 'self' https://content-texttospeech.googleapis.com;
+    form-action 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    manifest-src 'self';
+    worker-src 'self' blob:;
+  "
+/>
+
+
+
+    <title>Random Quote Generator in JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="welcome-section">
+      <div class="slant"></div>
+      <div>
+        <h1 class="title">Welcome to Quote Generator</h1>
+      </div>
+      <img class="welcome-image" src="einstein.jpg" alt="Welcome Image" />
+    </div>
+
+    <div class="container">
+      <div class="quote-container">
+        <div class="wrapper">
+          <header>Quote of the Day</header>
+          <div class="content">
+            <div class="quote-area">
+              <i class="fas fa-quote-left"></i>
+              <p class="quote">
+                Never give up because you never know if the next try is going to
+                be the one that works.
+              </p>
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="author">
+              <span>__</span>
+              <span class="name">Mary Kay Ash</span>
+            </div>
+          </div>
+          <div class="buttons">
+            <div class="features">
+              <ul>
+                <li class="copy"><i class="fas fa-copy"></i></li>
+                <li class="copy" id="speakBtn">
+                  <i class="fas fa-volume-up"></i>
+                </li>
+              </ul>
+              <button id="displayOnPiBtn1">Display on Rasberry Pi</button>	     
+              <button id="newQuoteBtn">New Quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="category-container">
+        <div class="category-content">
+          <div class="category-dropdown">
+            <label for="categorySelect">Select Category:</label>
+            <select id="categorySelect">
+              <option value="age">Age</option>
+              <option value="athletics">Athletics</option>
+              <option value="business">Business</option>
+              <option value="change">Change</option>
+              <option value="character">Character</option>
+              <option value="competition">Competition</option>
+              <option value="conservative">Conservative</option>
+              <option value="courage">Courage</option>
+              <option value="creativity">Creativity</option>
+              <option value="education">Education</option>
+              <option value="ethics">Ethics</option>
+              <option value="failure">Failure</option>
+              <option value="faith">Faith</option>
+              <option value="family">Family</option>
+              <option value="famous-quotes">Famous Quotes</option>
+              <option value="film">Film</option>
+              <option value="freedom">Freedom</option>
+              <option value="friendship">Friendship</option>
+              <option value="future">Future</option>
+              <option value="generosity">Generosity</option>
+              <option value="genius">Genius</option>
+              <option value="gratitude">Gratitude</option>
+              <option value="happiness">Happiness</option>
+              <option value="health">Health</option>
+              <option value="history">History</option>
+              <option value="honor">Honor</option>
+              <option value="humor">Humor</option>
+              <option value="humorous">Humorous</option>
+              <option value="imagination">Imagination</option>
+              <option value="inspirational">Inspirational</option>
+              <option value="knowledge">Knowledge</option>
+              <option value="leadership">Leadership</option>
+              <option value="life">Life</option>
+              <option value="literature">Literature</option>
+              <option value="love">Love</option>
+              <option value="mathematics">Mathematics</option>
+              <option value="motivational">Motivational</option>
+              <option value="nature">Nature</option>
+              <option value="opportunity">Opportunity</option>
+              <option value="pain">Pain</option>
+              <option value="perseverance">Perseverance</option>
+              <option value="philosophy">Philosophy</option>
+              <option value="politics">Politics</option>
+              <option value="power-quotes">Power Quotes</option>
+              <option value="proverb">Proverb</option>
+              <option value="religion">Religion</option>
+              <option value="sadness">Sadness</option>
+              <option value="science">Science</option>
+              <option value="self">Self</option>
+              <option value="self-help">Self Help</option>
+              <option value="social-justice">Social Justice</option>
+              <option value="society">Society</option>
+              <option value="spirituality">Spirituality</option>
+              <option value="sports">Sports</option>
+              <option value="stupidity">Stupidity</option>
+              <option value="success">Success</option>
+              <option value="technology">Technology</option>
+              <option value="time">Time</option>
+              <option value="tolerance">Tolerance</option>
+              <option value="truth">Truth</option>
+              <option value="virtue">Virtue</option>
+              <option value="war">War</option>
+              <option value="weakness">Weakness</option>
+              <option value="wellness">Wellness</option>
+              <option value="wisdom">Wisdom</option>
+              <option value="work">Work</option>
+            </select>
+          </div>
+
+          <header>Category Quotes</header>
+          <div class="category-quote-area">
+            <i class="fas fa-quote-left"></i>
+            <p class="category-quote">
+              <!-- Category quote content will go here -->
+            </p>
+            <i class="fas fa-quote-right"></i>
+          </div>
+          <div class="category-author">
+            <span>__</span>
+            <span class="category-name">Author Name</span>
+          </div>
+          <div class="category-buttons">
+            <div class="features">
+              <ul>
+                <li class="copy-category">
+                  <i class="fas fa-copy"></i>
+                </li>
+                <li class="copy-category" id="categorySpeakBtn">
+                  <i class="fas fa-volume-up"></i>
+                </li>
+              </ul>
+              <button id="displayOnPiBtn2">Display on Rasberry Pi</button>
+              <button id="newCategoryQuoteBtn">New Quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add this div for author quotes -->
+      <div class="author-container" id="author-container-1">
+        <div class="author-content">
+          <div class="author-search">
+            <label for="author-search-input">Search for Author:</label>
+            <input type="text" id="author-search-input" />
+            <button onclick="searchAuthors()">Search</button>
+          </div>
+          <div class="author-dropdown">
+            <label for="author-select">Select Author:</label>
+            <select id="author-select" onchange="loadAuthorQuotes(this.value)">
+              <!-- Options will be added dynamically with JavaScript -->
+            </select>
+          </div>
+          <header>Author Quotes</header>
+          <div class="author-quote-area">
+            <i class="fas fa-quote-left"></i>
+            <p class="author-quote">
+              <!-- Author quote content will go here -->
+            </p>
+            <i class="fas fa-quote-right"></i>
+          </div>
+          <div class="author-name">
+            <span>__</span>
+            <span class="author-name">Author Name</span>
+          </div>
+          <div class="author-buttons">
+            <div class="features">
+              <ul>
+                <li class="copy-author">
+                  <i class="fas fa-copy"></i>
+                </li>
+                <li class="copy-author" id="authorSpeakBtn">
+                  <i class="fas fa-volume-up"></i>
+                </li>
+              </ul>
+              <button id="displayOnPiBtn3">Display on Rasberry Pi</button>
+              <button id="newAuthorQuoteBtn">New Quote</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Combined Container -->
+      <div class="combined-container" id="combined-container-1">
+        <div class="combined-content">
+          <div class="combined-search">
+            <label for="combined-author-search-input">Search for Author:</label>
+            <input type="text" id="combined-author-search-input" />
+            <button onclick="searchCombinedAuthors()">Search</button>
+          </div>
+          <div class="combined-author-dropdown">
+            <label for="combined-author-select">Select Author:</label>
+            <select id="combined-author-select" onchange="loadCombinedQuotes()">
+              <!-- Options will be added dynamically with JavaScript -->
+            </select>
+          </div>
+          <div class="combined-category-dropdown">
+            <label for="combined-category-select">Select Category:</label>
+            <select
+              id="combined-category-select"
+              onchange="loadCombinedQuotes()"
+            >
+              <option value="age">Age</option>
+              <option value="athletics">Athletics</option>
+              <option value="business">Business</option>
+              <option value="change">Change</option>
+              <option value="character">Character</option>
+              <option value="competition">Competition</option>
+              <option value="conservative">Conservative</option>
+              <option value="courage">Courage</option>
+              <option value="creativity">Creativity</option>
+              <option value="education">Education</option>
+              <option value="ethics">Ethics</option>
+              <option value="failure">Failure</option>
+              <option value="faith">Faith</option>
+              <option value="family">Family</option>
+              <option value="famous-quotes">Famous Quotes</option>
+              <option value="film">Film</option>
+              <option value="freedom">Freedom</option>
+              <option value="friendship">Friendship</option>
+              <option value="future">Future</option>
+              <option value="generosity">Generosity</option>
+              <option value="genius">Genius</option>
+              <option value="gratitude">Gratitude</option>
+              <option value="happiness">Happiness</option>
+              <option value="health">Health</option>
+              <option value="history">History</option>
+              <option value="honor">Honor</option>
+              <option value="humor">Humor</option>
+              <option value="humorous">Humorous</option>
+              <option value="imagination">Imagination</option>
+              <option value="inspirational">Inspirational</option>
+              <option value="knowledge">Knowledge</option>
+              <option value="leadership">Leadership</option>
+              <option value="life">Life</option>
+              <option value="literature">Literature</option>
+              <option value="love">Love</option>
+              <option value="mathematics">Mathematics</option>
+              <option value="motivational">Motivational</option>
+              <option value="nature">Nature</option>
+              <option value="opportunity">Opportunity</option>
+              <option value="pain">Pain</option>
+              <option value="perseverance">Perseverance</option>
+              <option value="philosophy">Philosophy</option>
+              <option value="politics">Politics</option>
+              <option value="power-quotes">Power Quotes</option>
+              <option value="proverb">Proverb</option>
+              <option value="religion">Religion</option>
+              <option value="sadness">Sadness</option>
+              <option value="science">Science</option>
+              <option value="self">Self</option>
+              <option value="self-help">Self Help</option>
+              <option value="social-justice">Social Justice</option>
+              <option value="society">Society</option>
+              <option value="spirituality">Spirituality</option>
+              <option value="sports">Sports</option>
+              <option value="stupidity">Stupidity</option>
+              <option value="success">Success</option>
+              <option value="technology">Technology</option>
+              <option value="time">Time</option>
+              <option value="tolerance">Tolerance</option>
+              <option value="truth">Truth</option>
+              <option value="virtue">Virtue</option>
+              <option value="war">War</option>
+              <option value="weakness">Weakness</option>
+              <option value="wellness">Wellness</option>
+              <option value="wisdom">Wisdom</option>
+              <option value="work">Work</option>
+            </select>
+          </div>
+          <header>Combined Quotes</header>
+          <div class="combined-quote-area">
+            <i class="fas fa-quote-left"></i>
+            <p class="combined-quote">
+              <!-- Combined quote content will go here -->
+            </p>
+            <i class="fas fa-quote-right"></i>
+          </div>
+          <div class="combined-author-name">
+            <span>__</span>
+            <span class="combined-author-name">Author Name</span>
+          </div>
+          <div class="combined-buttons">
+            <div class="features">
+              <ul>
+                <li class="copy-combined">
+                  <i class="fas fa-copy"></i>
+                </li>
+                <li class="copy-combined" id="combinedSpeakBtn">
+                  <i class="fas fa-volume-up"></i>
+                </li>
+              </ul>
+	      <button id="displayOnPiBtn4">Display on Rasberry Pi</button>
+              <button id="newCombinedQuoteBtn" onclick="loadCombinedQuotes()">
+                New Quote
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>&copy; 2023 Daily Quote Generator. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+  </body>
+</html>
