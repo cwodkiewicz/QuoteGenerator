@@ -77,7 +77,7 @@ This detailed setup facilitates the replication of the project, ensuring expecte
 
 ## Usage
 
-1. Clone the repository: `git clone https://github.com/your-username/quote-generator.git`
+1. Clone the repository: `git clone https://github.com/cwodkiewicz/QuoteGenerator.git`
 2. Follow the setup guide to configure the project environment.
-3. Run the Flask server on the Raspberry Pi for LED matrix display and the Node.js server alomg with Cloud SQL proxy on the GCP VM for full functionality.
+3. Run the Flask server on the Raspberry Pi for LED matrix display and the Node.js server along with Cloud SQL proxy on the GCP VM for full functionality.
 4. Access the web platform through your browser.
