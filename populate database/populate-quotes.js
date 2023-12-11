@@ -1,12 +1,12 @@
-const fetch = require('node-fetch');
-const mysql = require('mysql');
+const fetch = require("node-fetch");
+const mysql = require("mysql");
 
 // Cloud SQL database configuration
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '&glZO=XmSJH0Nss|',
-  database: 'quotes',
+  host: "localhost",
+  user: "",
+  password: "",
+  database: "quotes",
 });
 
 // Function to fetch quotes from the API
@@ -58,7 +58,7 @@ const runScript = async () => {
     // Insert quotes into the database
     insertQuotesToDatabase(quotes);
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
   }
 };
 

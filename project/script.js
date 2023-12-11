@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize the API client
     gapi.client
       .init({
-        apiKey: "AIzaSyB-B3HIpz38oD4QS6_vEwBUvut-xN_3Bpc",
+        apiKey: "",
         discoveryDocs: [
           "https://texttospeech.googleapis.com/$discovery/rest?version=v1",
         ],
@@ -26,46 +26,46 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
- // Random Quote
+  // Random Quote
 
-async function fetchRandomQuote() {
-  const response = await fetch("https://35.239.118.124:4000/get-quote");
-  if (!response.ok) {
-    throw new Error(`Error fetching quote: ${response.statusText}`);
+  async function fetchRandomQuote() {
+    const response = await fetch("https://35.239.118.124:4000/get-quote");
+    if (!response.ok) {
+      throw new Error(`Error fetching quote: ${response.statusText}`);
+    }
+    return response.json();
   }
-  return response.json();
-}
 
-function displayQuote(content, author) {
-  quoteText.innerText = content;
-  authorName.innerText = author;
-  quoteBtn.classList.remove("loading");
-  quoteBtn.innerText = "New Quote";
-}
+  function displayQuote(content, author) {
+    quoteText.innerText = content;
+    authorName.innerText = author;
+    quoteBtn.classList.remove("loading");
+    quoteBtn.innerText = "New Quote";
+  }
 
-function randomQuote() {
-  quoteBtn.classList.add('loading');
-  quoteBtn.innerText = 'Loading Quote...';
+  function randomQuote() {
+    quoteBtn.classList.add("loading");
+    quoteBtn.innerText = "Loading Quote...";
 
-  // Replace the API call with your server's endpoint
-  fetch('http://34.68.157.123:3000/getRandomQuote') // Update with your VM's IP and port
-    .then((response) => response.json())
-    .then((result) => {
-      quoteText.innerText = result.content;
-      authorName.innerText = result.author;
-      quoteBtn.classList.remove('loading');
-      quoteBtn.innerText = 'New Quote';
-    })
-    .catch((error) => {
-      console.error('Error fetching quote:', error);
-      quoteBtn.classList.remove('loading');
-      quoteBtn.innerText = 'New Quote';
-    });
-}
+    // Replace the API call with your server's endpoint
+    fetch("http://34.68.157.123:3000/getRandomQuote") // Update with your VM's IP and port
+      .then((response) => response.json())
+      .then((result) => {
+        quoteText.innerText = result.content;
+        authorName.innerText = result.author;
+        quoteBtn.classList.remove("loading");
+        quoteBtn.innerText = "New Quote";
+      })
+      .catch((error) => {
+        console.error("Error fetching quote:", error);
+        quoteBtn.classList.remove("loading");
+        quoteBtn.innerText = "New Quote";
+      });
+  }
 
-quoteBtn.addEventListener('click', randomQuote);
+  quoteBtn.addEventListener("click", randomQuote);
 
-randomQuote();
+  randomQuote();
 
   function speakQuote(text) {
     // Use the Text-to-Speech API to synthesize speech
@@ -121,31 +121,31 @@ randomQuote();
   }
 
   function fetchCategoryQuote(category) {
-  categoryQuoteBtn.classList.add("loading");
-  categoryQuoteBtn.innerText = "Loading Quote...";
+    categoryQuoteBtn.classList.add("loading");
+    categoryQuoteBtn.innerText = "Loading Quote...";
 
-  const apiUrl = `http://34.68.157.123:3000/getCategoryQuote?category=${category}`;
+    const apiUrl = `http://34.68.157.123:3000/getCategoryQuote?category=${category}`;
 
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((result) => {
-      if (result.content) {
-        categoryQuoteText.innerText = result.content;
-        categoryAuthorName.innerText = result.author;
-      } else {
-        categoryQuoteText.innerText = "No quotes found.";
-        categoryAuthorName.innerText = "";
-      }
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.content) {
+          categoryQuoteText.innerText = result.content;
+          categoryAuthorName.innerText = result.author;
+        } else {
+          categoryQuoteText.innerText = "No quotes found.";
+          categoryAuthorName.innerText = "";
+        }
 
-      categoryQuoteBtn.classList.remove("loading");
-      categoryQuoteBtn.innerText = "New Quote";
-    })
-    .catch((error) => {
-      console.error("Error fetching category quote:", error);
-      categoryQuoteBtn.classList.remove("loading");
-      categoryQuoteBtn.innerText = "New Quote";
-    });
-}
+        categoryQuoteBtn.classList.remove("loading");
+        categoryQuoteBtn.innerText = "New Quote";
+      })
+      .catch((error) => {
+        console.error("Error fetching category quote:", error);
+        categoryQuoteBtn.classList.remove("loading");
+        categoryQuoteBtn.innerText = "New Quote";
+      });
+  }
 
   function handleCategoryChange() {
     const selectedCategory = categorySelect.value;
@@ -211,7 +211,6 @@ randomQuote();
         console.error("Error sending quote to Raspberry Pi:", error);
       });
   }
-
 });
 
 // footer
@@ -233,7 +232,7 @@ function initTextToSpeech() {
   // Initialize the API client
   gapi.client
     .init({
-      apiKey: "AIzaSyB-B3HIpz38oD4QS6_vEwBUvut-xN_3Bpc", // Replace with your actual API key
+      apiKey: "", // Replace with your actual API key
       discoveryDocs: [
         "https://texttospeech.googleapis.com/$discovery/rest?version=v1",
       ],
@@ -372,7 +371,6 @@ authorSpeakBtn.addEventListener("click", speakAuthorQuote);
 // Initial fetch
 handleAuthorChange();
 
-
 // Combined Quote
 function searchCombinedAuthors() {
   const query = document.getElementById("combined-author-search-input").value;
@@ -463,25 +461,23 @@ function fetchCombinedQuote(authorName, category) {
   newCombinedQuoteBtn.classList.add("loading");
   newCombinedQuoteBtn.innerText = "Loading Quote...";
 
-let apiUrl;
+  let apiUrl;
 
-// Update the API endpoint to your server's combined quote endpoint
-if (authorName && category) {
-  apiUrl = `http://34.68.157.123:3000/getCombinedQuote?author=${authorName}&category=${category}`;
-} else if (authorName) {
-  apiUrl = `http://34.68.157.123:3000/getCombinedQuote?author=${authorName}`;
-} else if (category) {
-  apiUrl = `http://34.68.157.123:3000/getCombinedQuote?category=${category}`;
-} else {
-  apiUrl = `http://34.68.157.123:3000/getCombinedQuote`;
-}
-
+  // Update the API endpoint to your server's combined quote endpoint
+  if (authorName && category) {
+    apiUrl = `http://34.68.157.123:3000/getCombinedQuote?author=${authorName}&category=${category}`;
+  } else if (authorName) {
+    apiUrl = `http://34.68.157.123:3000/getCombinedQuote?author=${authorName}`;
+  } else if (category) {
+    apiUrl = `http://34.68.157.123:3000/getCombinedQuote?category=${category}`;
+  } else {
+    apiUrl = `http://34.68.157.123:3000/getCombinedQuote`;
+  }
 
   fetch(apiUrl)
     .then((response) => response.json())
     .then((result) => {
       if (result.content) {
-
         combinedQuoteText.innerText = result.content;
         combinedAuthorNameElement.innerText = result.author;
       } else {

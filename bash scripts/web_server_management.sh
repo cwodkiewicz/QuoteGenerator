@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #gcp vm info
-VM_INSTANCE_NAME="wodkiewicz-csi4160"
-ZONE="us-central1-a"
+VM_INSTANCE_NAME=""
+ZONE=""
 
 #backup function
 backup_web_files() {

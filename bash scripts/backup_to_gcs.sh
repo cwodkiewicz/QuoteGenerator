@@ -3,7 +3,7 @@
 echo "Script started at $(date)" >> /var/log/quote_generator/debug.log
 
 # Path to your service account key JSON file
-export GOOGLE_APPLICATION_CREDENTIALS="/var/keys/wodkiewicz-4160-f23-46c1f62f000c.json"
+export GOOGLE_APPLICATION_CREDENTIALS="/var/keys/"
 
 # GCS bucket name
 BUCKET_NAME="quote_generator_bucket"
